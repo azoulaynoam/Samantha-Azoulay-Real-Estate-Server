@@ -1,0 +1,67 @@
+.apartment-search-section {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.apartment-search-section > .gallery {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.apartment-search-section > .gallery > .arrow i {
+    font-size: 50pt; 
+    color: rgba(255, 255, 255, 0.7);
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: rgba(0, 188, 203, 0.7);
+}
+
+.apartment-search-section > .gallery > .right {
+    margin-left:10px;
+    display: none;
+}
+
+.apartment-search-section > .gallery > .left {
+    margin-right:10px;
+    display: none;
+}
+
+.apartment-search-section > .gallery > .apartment-card {
+    height: 70vh;
+    width: 70vw;
+    background-color: rgba(0, 188, 203, 0.7);
+    border-radius: 10px;
+}
+
+.apartment-search-section > .gallery > .apartment-card > .cover {
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+@media only screen and (max-width: 800px) {
+    .apartment-search-section {
+        height: 700px;
+        justify-content: center;
+    }
+
+    .apartment-search-section > .gallery > .left {
+        display: block;
+    }
+
+    .apartment-search-section > .gallery > .right {
+        display: block;
+    }
+
+    .apartment-search-section > .gallery > .apartment-card {
+        height: 450px;
+        width: 270px;
+    }
+
+    .apartment-search-section > .gallery > .apartment-card > .cover {
+        width: 280px;
+    }
+}

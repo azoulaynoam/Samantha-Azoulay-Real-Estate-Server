@@ -1,0 +1,18 @@
+{
+  "name": "samantha",
+  "version": "1.0.0",
+  "description": "Samantha Azoulay Real Estate",
+  "main": "server.js",
+  "scripts": {
+    "server": "node server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "author": "Noam Azoulay",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.9.7",
+    "mongoose-auto-increment": "^5.0.1"
+  }
+}
