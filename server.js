@@ -6,7 +6,7 @@ var Property = require('./api/models/propertyModel').Property;
 var bodyParser = require('body-parser');
 
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://samantha:VCfk6!7$HLgH3ju@ds247499.mlab.com:47499/heroku_vmf897wr");
+mongoose.connect("mongodb://samantha:azoulay101@ds247499.mlab.com:47499/heroku_vmf897wr");
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
