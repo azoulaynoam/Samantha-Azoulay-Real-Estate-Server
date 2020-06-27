@@ -11,6 +11,7 @@
   "author": "Noam Azoulay",
   "license": "ISC",
   "dependencies": {
+    "concurrently": "^5.2.0",
     "express": "^4.17.1",
     "mongoose": "^5.9.7",
     "mongoose-auto-increment": "^5.0.1"

@@ -1,6 +1,7 @@
 var express = require('express'),
     app = express(),
     port = process.env.PORT || 4000;
+var cors = require('cors');
 var mongoose = require('mongoose');
 var Property = require('./api/models/propertyModel').Property;
 var bodyParser = require('body-parser');
