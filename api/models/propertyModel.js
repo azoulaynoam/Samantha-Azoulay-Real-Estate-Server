@@ -19,6 +19,10 @@ var PropertySchema = new mongoose.Schema({
         type: String,
         required: "Number of rooms"
     },
+    size: {
+        type: String,
+        required: "Size of the apartment (Square Meters)"
+    },
     price: {
         type: Number,
         required: "Price tag"

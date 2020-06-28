@@ -1,24 +1,7 @@
 import React from 'react';
-import './styles/apartment-section.css'
+import './styles/apartment-section.css';
+import IconWithValue from './IconWithValue';
 import Axios from 'axios';
-
-const ApartmentCard = props => {
-    return(
-        <div className="apartment-card">
-            <div className="card-gallery">
-                <img src={'./images/' + props.apartment._id} alt='blah' className="cover"/>
-            </div>
-            <div className="apartment-data">
-                <div className="icon">
-                    <i class="fas fa-bed"></i>
-                </div>
-                <div className="value">
-                    <b>{props.apartment.number_of_rooms}</b>
-                </div>
-            </div>
-        </div>
-    );
-}
 
 var apartment_index = 0;
 
@@ -37,7 +20,7 @@ class ApartmentSection extends React.Component{
         if (this.state.apartments.length - 1 > apartment_index) {
             apartment_index++;
             this.setState({apartment: this.state.apartments[apartment_index]});
-        }
+         }
     }
 
     leftArrow = () => {
@@ -67,7 +50,15 @@ class ApartmentSection extends React.Component{
                 <div className="left arrow" onClick={this.leftArrow}>
                     <i className="fas fa-angle-left"></i>
                 </div>
-                <ApartmentCard apartment={this.state.apartment}/>
+                <div className="apartment-card">
+                    <div className="card-gallery">
+                        <img src={'./images/' + this.state.apartment._id} alt='blah' className="cover"/>
+                    </div>
+                    <div className="info-container">
+                        <IconWithValue icon='fas fa-bed' value={this.state.apartment.number_of_rooms}/>
+                        <IconWithValue icon='fas fa-ruler-combined' value={this.state.apartment.size}/>
+                    </div>
+                </div>
                 <div className="right arrow" onClick={this.rightArrow}>
                     <i className="fas fa-angle-right"></i>
                 </div>
