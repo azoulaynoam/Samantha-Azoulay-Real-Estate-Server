@@ -20,6 +20,9 @@ class ApartmentSection extends React.Component{
         if (this.state.apartments.length - 1 > apartment_index) {
             apartment_index++;
             this.setState({apartment: this.state.apartments[apartment_index]});
+            if (this.state.apartment.number_of_rooms){
+                
+            }
          }
     }
 
@@ -55,8 +58,10 @@ class ApartmentSection extends React.Component{
                         <img src={'./images/' + this.state.apartment._id} alt='blah' className="cover"/>
                     </div>
                     <div className="info-container">
-                        <IconWithValue icon='fas fa-bed' value={this.state.apartment.number_of_rooms}/>
-                        <IconWithValue icon='fas fa-ruler-combined' value={this.state.apartment.size}/>
+                        <IconWithValue icon="fas fa-bed" value={this.state.apartment.bedrooms}/>
+                        <IconWithValue icon="fas fa-ruler-combined" value={this.state.apartment.size}/>
+                        <IconWithValue icon="fas fa-bath" value={this.state.apartment.bathrooms}/>
+                        <IconWithValue icon="fas fa-door-open" value={this.state.apartment.rooms}/>
                     </div>
                 </div>
                 <div className="right arrow" onClick={this.rightArrow}>

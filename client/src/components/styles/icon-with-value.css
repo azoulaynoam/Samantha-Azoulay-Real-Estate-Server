@@ -4,15 +4,11 @@
     box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.7);
     font-family: 'Comfortaa', sans-serif;
     width: 50px;
-    height: 16pt;
+    height: 25px;
     border-radius:5px; /* prefix not needed anymore */
-    font-size: 15pt;
+    font-size: 12pt;
+    justify-content: center;
+    align-items: center;
     color: white;
     justify-content: space-evenly;
-}
-
-.icon-with-value > .value {
-    width: 10px;
-    display: flex;
-    justify-content: center;
 }

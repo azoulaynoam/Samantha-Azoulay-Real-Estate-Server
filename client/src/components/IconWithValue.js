@@ -2,16 +2,11 @@ import React from 'react';
 import './styles/icon-with-value.css';
 
 class IconWithValue extends React.Component {
-    constructor(){
-        super();
-
-        this.state = {
-            icon: String,
-            value: String
-        }
-    }
-
     render() {
+        if (!this.props.value) {
+            return(null);
+        }
+        
         return(
             <div className="icon-with-value">
                 <div className="value">
