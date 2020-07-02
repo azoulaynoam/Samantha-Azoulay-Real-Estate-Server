@@ -6,8 +6,7 @@
     width: 50px;
     height: 25px;
     border-radius:5px; /* prefix not needed anymore */
-    font-size: 12pt;
-    justify-content: center;
+    font-size: 11pt;
     align-items: center;
     color: white;
     justify-content: space-evenly;

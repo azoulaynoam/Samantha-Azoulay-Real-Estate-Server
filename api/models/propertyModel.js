@@ -34,6 +34,14 @@ var PropertySchema = new mongoose.Schema({
     price: {
         type: Number,
         required: "Price tag"
+    },
+    video: {
+        type: String,
+        required: "Video URL"
+    },
+    images: {
+        type: [String],
+        required: "List of images"
     }
 });
 

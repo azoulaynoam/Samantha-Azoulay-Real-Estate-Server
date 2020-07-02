@@ -16,7 +16,7 @@
     margin-top: 20px;
     margin-right: 10px;
     border-radius: 5px;
-    filter: drop-shadow(1pt 1pt 2pt #10123c)
+    filter: drop-shadow(1pt 1pt 2pt #10123c);
 }
 
 .feature-section > .column-wrapper > .column i {
