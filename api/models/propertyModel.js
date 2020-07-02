@@ -37,11 +37,11 @@ var PropertySchema = new mongoose.Schema({
     },
     video: {
         type: String,
-        required: "Video URL"
+        required: false
     },
     images: {
         type: [String],
-        required: "List of images"
+        required: false
     }
 });
 
