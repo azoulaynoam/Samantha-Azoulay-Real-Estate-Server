@@ -5,6 +5,7 @@ class ImageSlider extends React.Component{
     constructor() {
         super();
         this.index = 1;
+        this.slide(this.index);
     }
 
     render(){
@@ -22,8 +23,8 @@ class ImageSlider extends React.Component{
             images = this.props.apartment.images.map((imageURI, i) => {
                 return(
                     <div className="slides image" key={i}>
-                        <div class="numbertext">{i} / {number_of_images}</div>
-                        <img src={imageURI}/>
+                        <div className="numbertext">{i} / {number_of_images}</div>
+                        <img src={imageURI} alt=""/>
                     </div>
                 );
             });
@@ -32,16 +33,26 @@ class ImageSlider extends React.Component{
             <div className="image-slider">
                 {video}
                 {images}
-                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                <a className="prev" onClick={this.prev()}>&#10094;</a>
+                <a className="next" onClick={this.next()}>&#10095;</a>
             </div>
         );
+    }
+
+    prev() {
+        this.slide(this.index - 1);
+    }
+
+    next() {
+        this.slide(this.index + 1);
     }
 
     slide(n){
         var i;
         var slides = document.getElementsByClassName("slides");
-        if (n > this.index) {
+        if(slides.length == 0)
+            return;
+        if (n > slides.length) {
             this.index = 1;
         } else if (n < 1) {
             this.index = slides.length;
@@ -49,7 +60,7 @@ class ImageSlider extends React.Component{
         for (i = 0; i < slides.length; i++) {
             slides[i].style.display = "none";  
         }
-        slides[this.index-1].style.display = "block";
+        slides[this.index - 1].style.display = "block";
     }
 }
 

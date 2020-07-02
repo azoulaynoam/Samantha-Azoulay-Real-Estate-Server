@@ -13,7 +13,7 @@ class IconWithValue extends React.Component {
                     <b>{this.props.value}</b>
                 </div>
                 <div className="icon">
-                    <i class={this.props.icon}></i>
+                    <i className={this.props.icon}></i>
                 </div>
             </div>
         );

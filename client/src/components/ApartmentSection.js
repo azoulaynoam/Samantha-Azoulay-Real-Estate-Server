@@ -15,7 +15,6 @@ class ApartmentSection extends React.Component{
             apartments: [],
             apartment: []
         }
-        
     }
 
     rightArrow = () => {
