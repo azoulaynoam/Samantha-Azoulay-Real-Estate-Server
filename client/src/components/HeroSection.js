@@ -4,7 +4,7 @@ import './styles/hero-section.css';
 class HeroSection extends React.Component {
     render() {
         return(
-        <div className="hero-section">
+        <div className="hero-section" id="hero-section">
             <div className="top-heading">
                 <h1>Are you looking for an apartment in Israel?</h1>
             </div>

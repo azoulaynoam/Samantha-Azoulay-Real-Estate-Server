@@ -2,65 +2,72 @@ import React from 'react';
 import './styles/image-slider.css';
 
 class ImageSlider extends React.Component{
-    constructor() {
-        super();
-        this.index = 1;
-        this.slide(this.index);
+    constructor(props) {
+        super(props);
+        this.state = {
+            index: 0
+        }
+    }
+
+    pharse_to_slides(apartment) {
+        var slides = []
+        var slides_length = apartment.images.length
+        if (apartment.video){
+            slides_length++
+            slides.push(
+                <div className="slides">
+                    <div className="numbertext">{slides.length + 1} / {slides_length}</div>
+                    <video className="video" controls>
+                        <source src={apartment.video} type="video/MP4"/>
+                    </video>
+                </div>
+            )
+        }
+
+        for (var [, image] of apartment.images.entries()){
+            slides.push(
+                <div className="slides fade">
+                    <div className="numbertext">{slides.length + 1} / {slides_length}</div>
+                    <div className="image">
+                        <img src={image} alt=""/>
+                    </div>
+                </div>
+            )
+        }
+        
+        return slides
     }
 
     render(){
-        var video = null
-        var images = null
-        if (this.props.apartment.video){
-            video = (
-                <div className="slides video">
-                    <video src={this.props.apartment.video}/>
-                </div>
-            );
-        }
-        if (this.props.apartment.images){
-            var number_of_images = this.props.apartment.images.length;
-            images = this.props.apartment.images.map((imageURI, i) => {
-                return(
-                    <div className="slides image" key={i}>
-                        <div className="numbertext">{i} / {number_of_images}</div>
-                        <img src={imageURI} alt=""/>
-                    </div>
-                );
-            });
-        }
+        this.slides = this.pharse_to_slides(this.props.apartment)
+        console.log(this.props.apartment)
         return(
             <div className="image-slider">
-                {video}
-                {images}
-                <a className="prev" onClick={this.prev()}>&#10094;</a>
-                <a className="next" onClick={this.next()}>&#10095;</a>
+                {this.slides[this.state.index]}
+                <div className="prev" onClick={this.prev}>
+                    <i>&#10094;</i>
+                </div>
+                <div className="next" onClick={this.next}>
+                    <i>&#10095;</i>
+                </div>
             </div>
         );
     }
 
-    prev() {
-        this.slide(this.index - 1);
+    prev = () => {
+        if (this.state.index - 1 >= 0){
+            this.setState({index: this.state.index - 1})
+        } else {
+            this.setState({index: this.slides.length - 1})
+        }
     }
 
-    next() {
-        this.slide(this.index + 1);
-    }
-
-    slide(n){
-        var i;
-        var slides = document.getElementsByClassName("slides");
-        if(slides.length == 0)
-            return;
-        if (n > slides.length) {
-            this.index = 1;
-        } else if (n < 1) {
-            this.index = slides.length;
+    next = () => {
+        if (this.state.index + 1 <= this.slides.length - 1){
+            this.setState({index: this.state.index + 1})
+        } else {
+            this.setState({index: 0})
         }
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";  
-        }
-        slides[this.index - 1].style.display = "block";
     }
 }
 
