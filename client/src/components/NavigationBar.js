@@ -41,8 +41,8 @@ class NavigationBar extends React.Component {
             <div className="navigation-bar">
                 <div className="left-column">
                     <div className="icon">
-                        <a href="tel:+972502364585">
-                            <i className="fas fa-phone-volume"></i>
+                        <a href="https://wa.me/+972-(050)2364585">
+                            <i className="fab fa-whatsapp"></i>
                         </a>
                     </div>
                     <div className="contact-hours-wrapper">

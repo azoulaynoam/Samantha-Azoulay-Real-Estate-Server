@@ -1,20 +1,17 @@
 {
-  "name": "samantha",
+  "name": "azoulay-real-estate",
   "version": "1.0.0",
-  "description": "Samantha Azoulay Real Estate",
+  "description": "Samantha Azoulay Real-Estate",
   "main": "server.js",
   "scripts": {
-    "server": "npm start",
-    "client": "npm start --prefix client",
+    "server": "cd server && npm start",
+    "client": "cd client && npm start",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "Noam Azoulay",
   "license": "ISC",
-  "dependencies": {
-    "concurrently": "^5.2.0",
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "mongoose": "^5.9.7",
-    "mongoose-auto-increment": "^5.0.1"
+  "dependencies": {},
+  "devDependencies": {
+    "concurrently": "^5.3.0"
   }
 }
