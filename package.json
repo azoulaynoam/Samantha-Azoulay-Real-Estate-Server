@@ -4,14 +4,20 @@
   "description": "Samantha Azoulay Real-Estate",
   "main": "server.js",
   "scripts": {
-    "server": "cd server && npm start",
-    "client": "cd client && npm start",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "start": "node server.js"
   },
   "author": "Noam Azoulay",
   "license": "ISC",
-  "dependencies": {},
-  "devDependencies": {
-    "concurrently": "^5.3.0"
-  }
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.7",
+    "mongoose-auto-increment": "^5.0.1",
+    "mongoose-ttl": "0.0.3",
+    "mongoose-unique-validator": "^2.0.3"
+  },
+  "devDependencies": {}
 }
