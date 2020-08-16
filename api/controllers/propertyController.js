@@ -69,7 +69,6 @@ exports.list_properties = function(req, res) {
     Property.find({req}, function(err, properties) {
         if(err)
             res.send(err);
-        res.json(properties);
-        res.send(200);
+        res.status(200).json(properties)
     });
 };
