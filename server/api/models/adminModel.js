@@ -1,9 +1,12 @@
 'use strict'
-var mongoose = require('mongoose')
-var uniqueValidator = require('mongoose-unique-validator')
-var ttl = require('mongoose-ttl')
+var mongoose = require('mongoose');
+var ttl = require('mongoose-ttl');
+var uniqueValidator = require('mongoose-unique-validator');
 
-var UserModel = mongoose.Schema({
+/**
+ * Represents a user for the admin panel
+ */
+var UserSchema = mongoose.Schema({
     username: {
         type: String,
         require: true,
@@ -14,14 +17,16 @@ var UserModel = mongoose.Schema({
         required: true
     },
     permission: {
-        type: [{
-            type: Number,
-            enum: [0, 1, 2]
-        }]
+        type: Number,
+        enum: [0, 1, 2],
+        default: 0
     }
 })
 
-var TokenModel = mongoose.Schema({
+/**
+ * Represents a loggin session for the admin panel
+ */
+var SessionSchema = mongoose.Schema({
     user_id: {
         type: String,
         require: true
@@ -31,19 +36,22 @@ var TokenModel = mongoose.Schema({
         require: true,
         unique: true
     },
+    login_date: {
+        type: Date,
+        required: true,
+        default: Date.now
+    },
     ip_address: {
         type: String,
         require: true
     }
 })
 
-UserModel.plugin(uniqueValidator.plugin, 'User')
-TokenModel.plugin(uniqueValidator.plugin, 'Token')
-TokenModel.plugin(ttl, {ttl: '7d', reap: true})
-var User = mongoose.model('User', UserModel)
-var Token = mongoose.model('Token', TokenModel)
+UserSchema.plugin(uniqueValidator);
+SessionSchema.plugin(uniqueValidator);
+SessionSchema.plugin(ttl, { ttl: '7d', reap: true });
 
 module.exports = {
-    User: User,
-    Token: Token
+    UserSchema: mongoose.model('Users', UserSchema),
+    SessionSchema: mongoose.model('Sessions', SessionSchema)
 }

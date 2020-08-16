@@ -1,6 +1,21 @@
-'use strict';
+'use strict'
 var mongoose = require('mongoose');
 var autoIncrement = require('mongoose-auto-increment');
+
+/**
+ * Represents a property
+ * @constructor
+ * @param {String} action - Sell or Rent
+ * @param {Boolean} status - Is it still avaliable or not
+ * @param {String} free_text - Apartment description
+ * @param {Number} rooms - Number of rooms
+ * @param {Number} bedrooms - Number of bedrooms
+ * @param {Number} bathrooms - Number of bathrooms
+ * @param {Number} size - Size of the apartment in Square Meters
+ * @param {Number} price - Price of the apartment
+ * @param {String} video - path to video
+ * @param {[String]} images - An array of images
+ */
 
 var PropertySchema = new mongoose.Schema({
     _id: {
@@ -51,8 +66,5 @@ var PropertySchema = new mongoose.Schema({
 });
 
 PropertySchema.plugin(autoIncrement.plugin, 'Property');
-var Property = mongoose.model('Property', PropertySchema);
 
-module.exports = {
-    Property: Property
-}
+module.exports = mongoose.model('Properties', PropertySchema)

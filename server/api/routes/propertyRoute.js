@@ -1,7 +1,14 @@
 'use strict'
 
 module.exports = function(app) {
+    var admin = require('../controllers/adminController')
     var property = require('../controllers/propertyController');
+
+    app.route('/login')
+        .post(admin.login)
+
+    app.route('/register')
+        .post(admin.register)
 
     app.route('/properties')
         .get(property.list_properties)

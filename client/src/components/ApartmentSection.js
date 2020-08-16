@@ -15,7 +15,7 @@ class ApartmentSection extends React.Component{
     }
 
     componentDidMount() {
-        Axios.get('https://samantha-azoulay-real-estate.herokuapp.com/properties')
+        Axios.get('https://realestate-in-israel.com:4000/properties')
         .then(res => {
             this.setState({apartments: res.data});
         }).catch(err => {
