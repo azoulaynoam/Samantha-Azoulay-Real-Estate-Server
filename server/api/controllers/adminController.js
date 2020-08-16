@@ -3,8 +3,7 @@
 var mongoose = require('mongoose')
 var crypto = require('crypto')
 var bcrypt = require('bcryptjs')
-var Admin = require('../models/adminModel') // This is used just for initiating the schemas to mongoose
-const { Session } = require('inspector')
+var {User, Session} = require('../models/adminModel') // This is used just for initiating the schemas to mongoose
 User = mongoose.model('Users')
 Session = mongoose.model('Sessions')
 

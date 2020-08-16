@@ -3,7 +3,7 @@
 var mongoose = require('mongoose')
 var Property = require('../models/propertyModel')
 Property = mongoose.model('Properties')
-Session = mongoose.model('Sessions')
+var Session = mongoose.model('Sessions')
 
 /**
  * Todo:
