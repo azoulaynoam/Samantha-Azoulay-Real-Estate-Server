@@ -66,10 +66,10 @@ exports.delete_property = function(req, res) {
  *      - Add a filter for aparment searching
  */
 exports.list_properties = function(req, res) {
-    Property.find({}, function(err, properties) {
+    Property.find({req}, function(err, properties) {
         if(err)
             res.send(err);
         res.json(properties);
-        res.end(200);
+        res.send(200);
     });
 };
