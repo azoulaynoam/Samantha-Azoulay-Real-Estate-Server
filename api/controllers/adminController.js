@@ -50,7 +50,7 @@ exports.login = function(req, res) {
             bcrypt.compare(req.body.password, user.password).then(() => {
                 var token = create_session(user)
                 var maxAge = 7 * 24 * 60 * 60 * 1000 // Thats a 1 week in miliseconds
-                res.status(200).cookie('access_token', token, {}).send('Logged in succesfully.');
+                res.status(200).cookie('access_token', token, {maxAge: maxAge ,httpOnly: true}).send('Logged in succesfully.');
             }).catch(() => {
                 res.status(401).send('Error: Wrong Password.')
             })
