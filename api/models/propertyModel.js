@@ -18,10 +18,6 @@ var autoIncrement = require('mongoose-auto-increment');
  */
 
 var PropertySchema = new mongoose.Schema({
-    _id: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true
-    },
     action: {
         type: String,
         enum: ['sell', 'rent'],
@@ -65,6 +61,6 @@ var PropertySchema = new mongoose.Schema({
     }
 });
 
-PropertySchema.plugin(autoIncrement.plugin, 'Property');
+PropertySchema.plugin(autoIncrement.plugin, 'Properties');
 
 module.exports = mongoose.model('Properties', PropertySchema)

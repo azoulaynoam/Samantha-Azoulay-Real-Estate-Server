@@ -1,11 +1,10 @@
 'use strict'
 
-var mongoose = require('mongoose')
+var server = require('../../server')
 var crypto = require('crypto')
 var bcrypt = require('bcryptjs')
-var {User, Session} = require('../models/adminModel') // This is used just for initiating the schemas to mongoose
-User = mongoose.model('Users')
-Session = mongoose.model('Sessions')
+var User = server.connection.model('Users')
+var Session = server.connection.model('Sessions')
 
 /**
  * A Function that generates tokens
@@ -21,7 +20,7 @@ var create_session = function(user){
     var session = new Session({
         used_id: user.user_id,
         token: token_generator(),
-        ip_address: req.body.ip
+        ip_address: 'test'
     })
     var generateToken = function(err, token_session){
         if(err){
@@ -50,7 +49,7 @@ exports.login = function(req, res) {
             bcrypt.compare(req.body.password, user.password).then(() => {
                 var token = create_session(user)
                 var maxAge = 7 * 24 * 60 * 60 * 1000 // Thats a 1 week in miliseconds
-                res.status(200).cookie('access_token', token, {httpOnly: true, maxAge: maxAge}).send('Logged in succesfully.');
+                res.status(200).cookie('access_token', token, {}).send('Logged in succesfully.');
             }).catch(() => {
                 res.status(401).send('Error: Wrong Password.')
             })
@@ -75,9 +74,9 @@ exports.register = function(req, res) {
                     res.status(401).json(err.errors)
                 } else {
                     var token = create_session(user)
-                    res.status(200).cookie('access_token', token, {httpOnly: true, maxAge: maxAge}).send('Registered succesfully.');
+                    res.status(200).cookie('access_token', token, {maxAge: maxAge ,httpOnly: true}).send('Registered succesfully.');
                 }
             })
         }
-    });
+    })
 }

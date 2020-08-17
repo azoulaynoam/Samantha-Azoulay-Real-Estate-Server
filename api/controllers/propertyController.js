@@ -1,9 +1,8 @@
 'use strict';
 
-var mongoose = require('mongoose')
-var Property = require('../models/propertyModel')
-Property = mongoose.model('Properties')
-var Session = mongoose.model('Sessions')
+var server = require('../../server')
+var Property = server.connection.model('Properties')
+var Session = server.connection.model('Sessions')
 
 /**
  * Todo:
@@ -62,13 +61,14 @@ exports.delete_property = function(req, res) {
 };
 
 /**
- * Todo:
- *      - Add a filter for aparment searching
+ * Listing all properties, can filter
  */
 exports.list_properties = function(req, res) {
-    Property.find({req}, function(err, properties) {
+    Property.find({}, function(err, properties) {
         if(err)
-            res.send(err);
-        res.status(200).json(properties)
+            res.status(404).send(err);
+        res.status(200).json(properties);
+    }).catch((err) => {
+        console.log(err)
     });
 };
