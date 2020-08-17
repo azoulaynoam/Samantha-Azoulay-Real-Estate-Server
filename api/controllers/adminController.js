@@ -25,6 +25,7 @@ var create_session = function(user){
     var generateToken = function(err, token_session){
         if(err){
             if (err.errors.token){
+                console.log(err)
                 session.token = token_generator()
                 session.save(generateToken)
             } else {
@@ -33,7 +34,7 @@ var create_session = function(user){
         }
     }
     session = new Session(session)
-    session.save(generateToken)
+    return session.save(generateToken)
 }
 
 /**
@@ -74,6 +75,7 @@ exports.register = function(req, res) {
                     res.status(401).json(err.errors)
                 } else {
                     var token = create_session(user)
+                    print(token)
                     res.status(200).cookie('access_token', token, {maxAge: maxAge ,httpOnly: true}).send('Registered succesfully.');
                 }
             })
