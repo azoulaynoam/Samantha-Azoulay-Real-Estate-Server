@@ -1,4 +1,5 @@
 'use strict'
+const { json } = require('express');
 var mongoose = require('mongoose');
 var autoIncrement = require('mongoose-auto-increment');
 
@@ -21,46 +22,52 @@ var PropertySchema = new mongoose.Schema({
     action: {
         type: String,
         enum: ['sell', 'rent'],
-        required: "Selling or Renting"
+        required: true
     },
     status: {
         type: Boolean, 
-        required: "Status of the post"
+        required: true
     },
-    free_text: {
+    free_text_en: {
         type: String,
-        required: "Describe the apartment"
+        required: true,
+        maxlength: 380
+    },
+    free_text_he: {
+        type: String,
+        required: true,
+        maxlength: 380
     },
     rooms: {
         type: Number,
-        required: "Number of rooms."
+        required: true
     },
     bedrooms: {
         type: Number,
-        required: "Number of bedrooms."
+        required: true
     },
     bathrooms: {
         type: Number,
-        required: "Number of bathrooms."
+        required: true
     },
     size: {
         type: Number,
-        required: "Size of the apartment (Square Meters)"
+        required: true
     },
     price: {
         type: Number,
-        required: "Price tag"
+        required: true
     },
     video: {
         type: String,
         required: false
     },
     images: {
-        type: [String],
+        type: [JSON],
         required: false
     }
 });
 
-PropertySchema.plugin(autoIncrement.plugin, 'Properties');
+PropertySchema.plugin(autoIncrement.plugin, { model: 'Properties', field: 'id' });
 
 module.exports = mongoose.model('Properties', PropertySchema)
