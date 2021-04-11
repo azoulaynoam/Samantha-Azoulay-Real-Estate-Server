@@ -9,7 +9,7 @@ const path = require('path')
 const multer = require('multer')
 
 mongoose.Promise = global.Promise;
-const uri = "mongodb+srv://samaaz:v8ELJ0afnu4Zkn4c@cluster0.ixv9d.mongodb.net/samantha?retryWrites=true&w=majority";
+const uri = "";
 var connection = mongoose.createConnection(uri, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false})
 autoIncrement.initialize(connection);
 
